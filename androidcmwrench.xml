@@ -90,7 +90,7 @@
 	<taskdef resource="net/sf/antcontrib/antlib.xml"
 	                      classpathref="antlibs.path"/>
 	<taskdef resource="checkstyletask.properties"
-	                 classpath="antlibs.path"/>
+	                 classpathref="antlibs.path"/>
 	<!-- classycle site directios wrong, requires classpathref not classpath to 
 	              load taskdef via antclassloader-->
 	<taskdef name="classycleDependencyCheck" 
@@ -121,52 +121,20 @@
 		       	</fileset>
 	</path>
 	<path id="our.android.jars.path">
-		<!-- We have to check if our jar property values are something or nothing-->
-		<if>
-			<isset property="android.framework.jar.path"/>
-			<then>
-				  <include file="${android.framework.jar.path}"/>
-			</then>
-			<else>
-				<fail message="whops need at least android.jar path defiend in local.proeprties"/>
-			</else>
-		</if>
-	        <if>
-		        <isset property="${android.gmap.jar.path}"/>
-	        <then>
-	        	<include file="${android.gmap.jar.path}"/>
-	        </then>
-		</if>
-		<if>
-		     <isset property="${android.compatibility.jar.path}"/>
-			<then>
-			     <include file="${android.compatibility.jar.path}"/>
-			</then>
-		</if>
-		<if>
-		     <isset property="${android.analytics.jar.path}"/>
-			<then>
-			      <include file="${android.analytics.jar.path}"/>
-			</then>
-		</if>
-		<if>
-		     <isset property="${android.ads.jar.path}"/>
-			<then>
-			      <inlcude file="${android.ads.jar.path}"/>
-			</then>
-		</if>
+		
+				  <pathelement location="${android.framework.jar.path}"/>
+			
+	        	<pathelement location="${android.gmap.jar.path}"/>
+	        
+			     <pathelement location="${android.compatibility.jar.path}"/>
+			
+			      <pathelement location="${android.analytics.jar.path}"/>
+			
+			      <pathelement location="${android.ads.jar.path}"/>
+			
 	</path>
 	
 	
-	<if>
-	       <equals arg1="${eclipse.running}" arg2="true"/>
-		<then>
-			      
-			</then>
-		<else>
-			<fail message="Something wrong here. You are not using Eclipse IDE to execute thecodemetrics task"/>
-		</else>
-	</if>
 	
 	<target name="codemetrics">
 		<!-- First make sure the project.docs. folders and assets are created and 
@@ -174,7 +142,14 @@
 	    <mkdir dir="${project.docs.dir}"/>
 		<mkdir dir="${project.docs.images.dir}"/>
 		<mkdir dir="${javadocs.dir}"/>
-		<copydir dest="${project.docs.images.dir}" src="${acmw.codeqa.assets.dir}/images"/>
+		<copy todir="${project.docs.images.dir}">
+		            <fileset dir="${acmw.codeqa.assets.dir}/images">
+		            	<inlcude name="**.png"/>
+		            	<include name="**.jpeg"/>
+		            	<include name="**.gif"/>
+			        </fileset>
+			</copy>
+		
 		<copy todir="${project.docs.dir}">
 		    <fileset dir="${acmw.codeqa.assets.dir}/css">
 		      <include name="*.css"/>
@@ -212,19 +187,7 @@
 		              style="${acmw.xsls.javancsshtml}">
 		          <mapper type="glob" from="javancss.xml" to="javancss.html"/>
 		        </xslt>
-		<jdepend outputfile="${project.docs.dir}/jdepend.xml" fork="yes" format="xml">
-		    <sourcespath>
-		        <pathelement location="src"/>
-		    </sourcespath>
-		    <classpath>
-		        <pathelement location="bin/classes"/>
-		        
-		    </classpath>
-		</jdepend>
-		<xslt basedir="${project.docs.dir}" destdir="${project.docs.dir}"
-		              style="${acmw.xsls.jdepend}">
-		          <mapper type="glob" from="jdepend.xml" to="jdepend.html"/>
-		        </xslt>
+		
 		<pmd rulesetfiles="${pmd.ruleset.file}">
 		          <formatter type="net.sourceforge.pmd.renderers.HTMLRenderer" toFile="${project.docs.dir}/pmd.html"/>
 		          <fileset dir="src">
