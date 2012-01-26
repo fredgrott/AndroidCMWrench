@@ -111,6 +111,14 @@
 	    <property name="pmd.ruleset.file" 
 	        location="${acmw.basedir}/android_pmd_ruleset.xml"/>
 	
+	<!-- other paths -->
+	<path id="our.source.path">
+	             <fileset dir="src">
+	             	<include name="**/*.java"/>
+	             </fileset>
+	</path>
+	
+	
 	<if>
 	       <equals arg1="${eclipse.running}" arg2="true"/>
 		<than>
@@ -136,6 +144,35 @@
 			    <include name="*.js"/>
 			</fileset>
 		  </copy>
+		
+		<checkstyle config="${checkstyle.config.file}"
+		              failureProperty="checkstyle.failure"
+		              failOnViolation="false">
+		    <formatter type="xml" tofile="${project.docs.dir}/checkstyle.xml"/>
+		    <fileset dir="src" includes="**/*.java"/>
+			
+		</checkstyle>
+		<classycleReport reportFile="${project.docs.dir}/classycle.xml">
+		      <fileset dir="bin/classes">
+		        <include name="**/*.class"/>
+		      </fileset>
+		</classycleReport>
+		
+		<javancss srcdir="src"
+		            generateReport="true"
+		            outputfile="${project.docs.dir}/javancss.xml"
+		            format="xml"/>
+		
+		<jdepend outputfile="${project.docs.dir}/jdepend.xml" fork="yes" format="xml">
+		    <sourcespath>
+		        <pathelement location="src"/>
+		    </sourcespath>
+		    <classpath>
+		        <pathelement location="bin/classes"/>
+		        
+		    </classpath>
+		</jdepend>
+		
 		
 	</target>
 	
