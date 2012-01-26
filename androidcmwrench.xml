@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     Jan 26, 2012 7:17:14 AM                                                        
+
+     AndroidCMWrench    
+     a set of build script stuf to execute code metric report generatio afte the IDE 
+     incremental builder has executed.
+     
+     Logical sequence is:
+     
+     1. Load antlibs taskdefs
+     2. Check if .classpath metadata filei exists.
+     3 Fail build if .classpath does not exist.
+     4. if isEclipse.running is false fail the build
+     5 if isEclipse.running is true execute the codemetrics ant target
+                   
+     fredgrott                                                                
+     ====================================================================== -->
+<project name="AndroidCMWrench" default="default">
+    <description>
+            a set of build script stuf to execute code metric report generatio afte the IDE 
+    	incremental builder has executed.
+    </description>
+
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="default" depends="depends" 
+    	description="a set of build script stuf to execute code metric report generatio afte the IDE incremental builder has executed.">
+        
+    </target>
+
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: depends                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="depends">
+    </target>
+
+</project>
