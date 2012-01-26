@@ -3,7 +3,7 @@
      Jan 26, 2012 7:17:14 AM                                                        
 
      AndroidCMWrench    
-     a set of build script stuf to execute code metric report generatio afte the IDE 
+     a set of build script stuff to execute code metric report generatio afte the IDE 
      incremental builder has executed.
      
      Logical sequence is:
@@ -18,9 +18,70 @@
      ====================================================================== -->
 <project name="AndroidCMWrench" default="default">
     <description>
-            a set of build script stuf to execute code metric report generatio afte the IDE 
+            a set of build script stuff to execute code metric report generatio afte the IDE 
     	incremental builder has executed.
     </description>
+	
+	<dirname file="${ant.file}" property="acmw.basedir"/>
+	<!-- make sure weload env settings as properties-->
+	<property environment="env"/>
+	<!-- load property file and if not available fail the build
+	
+	      The properties are:
+	      android.framework.jar.path=
+          android.gmap.jar.path=
+          android.compatibility.jar.path=
+          android.analytics.jar.path=
+          android.ads.jar.path=
+	
+	-->
+	<loadproperties  srcFile="local.properties"/>
+	<tstamp/>
+	
+	<property name="acmw.assets.dir" location="${acmw.basedir}/acmw.assets"/>
+	<property name="acmw.antlibsdir" location="${acmw.assets.dir}/antlibs"/>
+	<property name="acmw.codeqa.assets.dir"
+		location="${acmw.assets.dir}/codeqa.assets"/>
+	<property name="acmw.doclet.assets.dir" 
+		location="${acmw.assets.dir}/doclet.assets"/>
+	
+	<property name="acmw.xsls.chartccn" 
+		location="${acmw.codeqa.assets.dir}/xsls/chart_ccn.xsl"/>
+	<property name="acmw.xsls.chartfunction" 
+		location="${acmw.codeqa.assets.dir}/xsls/chart_function_package.xsl"/>
+	<property name="acmw.xsls.chartncsspackage" 
+		location="${acmw.codeqa.assets.dir}/xsls/chart_ncss_package.xsl"/>
+	<property name="acmw.xsls.chartncss"
+		location="${acmw.codeqa.assets.dir}/xsls/chart_ncss.xsl"/>
+	<property name="acmw.xsls.checkstyle"
+		location="${acmw.codeqa.assets.dir}/xsls/checkstyle.xsl"/>
+	<property name="acmw.xsls.classycle" 
+		location="${acmw.codeqa.assets.dir}/xsls/classycle.xsl"/>
+	<property name="acmw.xsls.javancssgraph" 
+		location="${acmw.codeqa.assets.dir}/xsls/javancss_graph.xsl"/>
+	<property name="acmw.xsls.javancsshtml" 
+		location="${acmw.codeqa.assets.dir}/xsls/javancss2html.xsl"/>
+	<property name="acmw.xsls.jdepend" 
+		location="${acmw.codeqa.assets.dir}/xsls/jdepend.xsl"/>
+	<property name="acmw.xsls.jdependdot" 
+		location="${acmw.codeqa.assets.dir}/xsls/jdepend2dot.xsl"/>
+	<property name="acmw.xsls.pmd" 
+		location="${acmw.codeqa.assets.dir}/xsls/pmd.xsl"/>
+	
+	<property name="acmw.pmd.rulesets.name" value="customized-android"/>
+	<property name="codeqa.report.today" value="${TODAY}"/>
+	
+	<property name="acmw.doclet.jar.path" 
+		location="${acmw.doclet.assets.dir}/doclava-1.0.5.jar"/>
+	<property name="acmw.doclet.doclava.assets.dir" 
+		location="${acmw.doclet.assets.dir}/assets"/>
+	
+	<path id="antlibs.path">
+	             <fileset dir="${acmw.antlibsdir}">
+		               <include name="**/*.jar"/>
+		        </fileset>
+	</path>
+	
 
     <!-- ================================= 
           target: default              

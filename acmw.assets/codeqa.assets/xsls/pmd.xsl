@@ -7,8 +7,7 @@
   <!-- ====================================================================
        Mapping of images onto files
        ==================================================================== -->
-  <!ENTITY logoImg            "images/pmd_logo_small.jpg">
-  <!ENTITY companylogoImg     "images/companylogo.png">
+  <!ENTITY logoImg            "images/pmdlogo.png">
   <!ENTITY linkImg            "images/link.png">
   <!ENTITY mixedCycleLinkImg       "images/mixedCycleLink.png">
   <!ENTITY innerCycleLinkImg       "images/innerCycleLink.png">
@@ -37,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="css/reports.css"/>
     </head>
     <body>
-    <h1><img src="&companylogoImg;"/></h1>
     <h1><img src="&logoImg;"/>PMD Static Analysis of <xsl:value-of select="$project"/> source code</h1>
     <p align="right">Run with <a href="http://pmd.sourceforge.net">PMD <xsl:value-of select="//pmd/@version"/></a> on <xsl:value-of select="//pmd/@timestamp"/></p>
     <hr size="2"/>

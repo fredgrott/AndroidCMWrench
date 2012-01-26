@@ -59,7 +59,7 @@
       </head>  
       <body>
         <h1>
-        <a name="top">JavaNCSS Analysis</a>
+        <img src="images/javancsslogo.png"/><a name="top">JavaNCSS Analysis</a>
         </h1>
         <p align="right">Designed for use with <a href="http://www.kclee.com/clemens/java/javancss/">JavaNCSS</a> and <a href="http://jakarta.apache.org">Ant</a>.</p>
         <hr size="2"/>

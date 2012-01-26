@@ -33,8 +33,7 @@
   <!-- ====================================================================
        Mapping of images onto files
        ==================================================================== -->
-  <!ENTITY logoImg            "images/logo.png">
-  <!ENTITY companylogoImg     "images/companylogo.png">
+  <!ENTITY logoImg            "images/classyclelogo.png">
   <!ENTITY linkImg            "images/link.png">
   <!ENTITY mixedCycleLinkImg       "images/mixedCycleLink.png">
   <!ENTITY innerCycleLinkImg       "images/innerCycleLink.png">
@@ -154,10 +153,10 @@
         </script>
       </head>
       <body>
-      <h1><img src="&companylogoImg;"/></h1>
+      
         <h1><a href="http://classycle.sourceforge.net" alt="Classcyle Home Page">
               <img src="&logoImg;" alt="Classcyle" width="200"
-                   height="135" border="0" align="middle" hspace="4"/>
+                   height="100" border="0" align="middle" hspace="4"/>
             </a>
             Analysis of <xsl:value-of select="/classycle/@title"/></h1>
         Date: <xsl:value-of select="/classycle/@date"/>

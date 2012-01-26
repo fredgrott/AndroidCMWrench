@@ -87,7 +87,7 @@
         <li><xsl:value-of select="@name"/></li>
     </xsl:for-each>
     </ul-->
-    <image src="jdepend.png"/>
+    <image src="jdependlogo.png"/>
     <h1><a name="top">JDepend Analysis</a></h1>
     <p align="right">Designed for use with <a href="http://www.clarkware.com/software/JDepend.html">JDepend</a> and <a href="http://jakarta.apache.org">Ant</a>.</p>
     <hr size="2" />

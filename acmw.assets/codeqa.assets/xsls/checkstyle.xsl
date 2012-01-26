@@ -12,7 +12,6 @@
        Mapping of images onto files
        ==================================================================== -->
   <!ENTITY logoImg            "images/checkstylelogo.png">
-  <!ENTITY companylogoImg     "images/companylogo.png">
   <!ENTITY linkImg            "images/link.png">
 
 ]>
@@ -32,7 +31,6 @@
     <link rel="stylesheet" type="text/css" href="css/reports.css"/>
     </head>
     <body>
-    <h1><img src="&companylogoImg;"/></h1>
     <h1><img src="&logoImg;"/>Checkstyle Audit of <xsl:value-of select="$project"/> source code</h1>
     <p align="right">Run with <a href="http://checkstyle.sourceforge.net">Checkstyle <xsl:value-of select="//checkstyle/@version"/></a>  via <a href="http://ant.apache.org">Apache ANT <xsl:value-of select="//ant/@version"/></a> on <xsl:value-of select="$today"/></p>
     <hr size="2"/>
