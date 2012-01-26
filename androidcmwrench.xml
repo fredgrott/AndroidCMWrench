@@ -82,6 +82,30 @@
 		        </fileset>
 	</path>
 	
+	<!-- antlib taskdefs -->
+	<taskdef resource="net/sf/antcontrib/antlib.xml"
+	                      classpathref="antlibs.path"/>
+	<taskdef resource="checkstyletask.properties"
+	                 classpath="antlibs.path"/>
+	<!-- classycle site directios wrong, requires classpathref not classpath to 
+	              load taskdef via antclassloader-->
+	<taskdef name="classycleDependencyCheck" 
+	                     classname="classycle.ant.DependencyCheckingTask"
+	                      classpathref="antlibs.path"/>
+	<taskdef name="classycleReport" classname="classycle.ant.ReportTask"
+	                     classpathref="antlibs.path"/>
+	<!-- javancss site docs wrong need to use classpathref instead of classpath-->
+	<taskdef name="javancss"
+	                    classname="javancss.JavancssAntTask"
+	                    classpathref="antlibs.path"/>
+	 <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask"
+	                    classpathref="antlibs.path"/>
+	
+	<!-- pmd an cehckstyle config file locations-->
+	    <property name="checkstyle.config.file" 
+	        location="${acmw.basedir}/eclipse.checkstyle.android.xml"/>
+	    <property name="pmd.ruleset.file" 
+	        location="${acmw.basedir}/android_pmd_ruleset.xml"/>
 
     <!-- ================================= 
           target: default              
