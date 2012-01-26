@@ -101,7 +101,7 @@
 	 <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask"
 	                    classpathref="antlibs.path"/>
 	
-	<!-- pmd an cehckstyle config file locations-->
+	<!-- pmd and checkstyle config file locations-->
 	    <property name="checkstyle.config.file" 
 	        location="${acmw.basedir}/eclipse.checkstyle.android.xml"/>
 	    <property name="pmd.ruleset.file" 
