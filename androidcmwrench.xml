@@ -116,14 +116,53 @@
 	             <fileset dir="src">
 	             	<include name="**/*.java"/>
 	             </fileset>
+		       <fileset dir="gen">
+		       	     <include name="**/*.java"/>
+		       	</fileset>
+	</path>
+	<path id="our.android.jars.path">
+		<!-- We have to check if our jar property values are something or nothing-->
+		<if>
+			<isset property="android.framework.jar.path"/>
+			<then>
+				  <include file="${android.framework.jar.path}"/>
+			</then>
+			<else>
+				<fail message="whops need at least android.jar path defiend in local.proeprties"/>
+			</else>
+		</if>
+	        <if>
+		        <isset property="${android.gmap.jar.path}"/>
+	        <then>
+	        	<include file="${android.gmap.jar.path}"/>
+	        </then>
+		</if>
+		<if>
+		     <isset property="${android.compatibility.jar.path}"/>
+			<then>
+			     <include file="${android.compatibility.jar.path}"/>
+			</then>
+		</if>
+		<if>
+		     <isset property="${android.analytics.jar.path}"/>
+			<then>
+			      <include file="${android.analytics.jar.path}"/>
+			</then>
+		</if>
+		<if>
+		     <isset property="${android.ads.jar.path}"/>
+			<then>
+			      <inlcude file="${android.ads.jar.path}"/>
+			</then>
+		</if>
 	</path>
 	
 	
 	<if>
 	       <equals arg1="${eclipse.running}" arg2="true"/>
-		<than>
+		<then>
 			      
-			</than>
+			</then>
 		<else>
 			<fail message="Something wrong here. You are not using Eclipse IDE to execute thecodemetrics task"/>
 		</else>
@@ -150,19 +189,29 @@
 		              failOnViolation="false">
 		    <formatter type="xml" tofile="${project.docs.dir}/checkstyle.xml"/>
 		    <fileset dir="src" includes="**/*.java"/>
-			
-		</checkstyle>
+	</checkstyle>
+		<xslt basedir="${project.docs.dir}" destdir="${project.docs.dir}"
+		      style="${acmw.xsls.checkstyle}">
+		  <mapper type="glob" from="checkstyle.xml" to="checkstyle.html"/>
+		</xslt>
+
 		<classycleReport reportFile="${project.docs.dir}/classycle.xml">
 		      <fileset dir="bin/classes">
 		        <include name="**/*.class"/>
 		      </fileset>
 		</classycleReport>
-		
+		<xslt basedir="${project.docs.dir}" destdir="${project.docs.dir}"
+		              style="${acmw.xsls.classycle}">
+		          <mapper type="glob" from="classycle.xml" to="classycle.html"/>
+		        </xslt>
 		<javancss srcdir="src"
 		            generateReport="true"
 		            outputfile="${project.docs.dir}/javancss.xml"
 		            format="xml"/>
-		
+		<xslt basedir="${project.docs.dir}" destdir="${project.docs.dir}"
+		              style="${acmw.xsls.javancsshtml}">
+		          <mapper type="glob" from="javancss.xml" to="javancss.html"/>
+		        </xslt>
 		<jdepend outputfile="${project.docs.dir}/jdepend.xml" fork="yes" format="xml">
 		    <sourcespath>
 		        <pathelement location="src"/>
@@ -172,6 +221,17 @@
 		        
 		    </classpath>
 		</jdepend>
+		<xslt basedir="${project.docs.dir}" destdir="${project.docs.dir}"
+		              style="${acmw.xsls.jdepend}">
+		          <mapper type="glob" from="jdepend.xml" to="jdepend.html"/>
+		        </xslt>
+		<pmd rulesetfiles="${pmd.ruleset.file}">
+		          <formatter type="net.sourceforge.pmd.renderers.HTMLRenderer" toFile="${project.docs.dir}/pmd.html"/>
+		          <fileset dir="src">
+		              <include name="**/*.java"/>
+		          </fileset>
+		      </pmd>
+		
 		
 		
 	</target>
