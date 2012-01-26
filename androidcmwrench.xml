@@ -38,6 +38,10 @@
 	<loadproperties  srcFile="local.properties"/>
 	<tstamp/>
 	
+	<property name="project.docs.dir" location="${acmw.basedir}/project.docs"/>
+	<property name="project.docs.images.dir" location="${project.docs.dir}/images"/>
+	<property name="javadocs.dir" location="${project.docs.dir}/javadocs"/>
+	
 	<property name="acmw.assets.dir" location="${acmw.basedir}/acmw.assets"/>
 	<property name="acmw.antlibsdir" location="${acmw.assets.dir}/antlibs"/>
 	<property name="acmw.codeqa.assets.dir"
@@ -106,6 +110,35 @@
 	        location="${acmw.basedir}/eclipse.checkstyle.android.xml"/>
 	    <property name="pmd.ruleset.file" 
 	        location="${acmw.basedir}/android_pmd_ruleset.xml"/>
+	
+	<if>
+	       <equals arg1="${eclipse.running}" arg2="true"/>
+		<than>
+			      
+			</than>
+		<else>
+			<fail message="Something wrong here. You are not using Eclipse IDE to execute thecodemetrics task"/>
+		</else>
+	</if>
+	
+	<target name="codemeterics">
+		<!-- First make sure the project.docs. folders and assets are created and 
+		copied over-->
+	    <mkdir dir="${project.docs.dir}"/>
+		<mkdir dir="${project.docs.images.dir}"/>
+		<mkdir dir="${javadocs.dir}"/>
+		<copydir dest="${project.docs.images.dir}" src="${acmw.codeqa.assets.dir}/images"/>
+		<copy todir="${project.docs.dir}">
+		    <fileset dir="${acmw.codeqa.assets.dir}/css">
+		      <include name="*.css"/>
+		    </fileset>
+			<fileset dir="${acmw.codeqa.assets.dir}/js">
+			    <include name="*.js"/>
+			</fileset>
+		  </copy>
+		
+	</target>
+	
 
     <!-- ================================= 
           target: default              
