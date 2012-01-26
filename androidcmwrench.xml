@@ -16,7 +16,7 @@
                    
      fredgrott                                                                
      ====================================================================== -->
-<project name="AndroidCMWrench" default="default">
+<project name="AndroidCMWrench" default="codemetrics">
     <description>
             a set of build script stuff to execute code metric report generatio afte the IDE 
     	incremental builder has executed.
@@ -168,7 +168,7 @@
 		</else>
 	</if>
 	
-	<target name="codemeterics">
+	<target name="codemetrics">
 		<!-- First make sure the project.docs. folders and assets are created and 
 		copied over-->
 	    <mkdir dir="${project.docs.dir}"/>
@@ -231,24 +231,24 @@
 		              <include name="**/*.java"/>
 		          </fileset>
 		      </pmd>
-		
-		
+		<!-- doclava -->
+		<javadoc access="public" 
+		            destdir="project.docs/javadocs"
+		            bootclasspathref="our.android.jars.path"
+		            docletpath="${acmw.doclet.jar.path}"
+		            sourcepath="src:gen">
+		            <doclet name="com.google.doclava.Doclava" >
+		                <param name="-stubs" value="bin/stubs" />
+		                <param name="-hdf"/> 
+		                <param name="project.name"/> 
+		                <param name="${ant.project.name}"/>
+		                <param name="-templatedir"/>
+		                <param name="${acmw.doclet.doclava.assets.dir}"/>
+		          </doclet>
+		        </javadoc>
 		
 	</target>
 	
 
-    <!-- ================================= 
-          target: default              
-         ================================= -->
-    <target name="default" depends="depends" 
-    	description="a set of build script stuf to execute code metric report generatio afte the IDE incremental builder has executed.">
-        
-    </target>
-
-    <!-- - - - - - - - - - - - - - - - - - 
-          target: depends                      
-         - - - - - - - - - - - - - - - - - -->
-    <target name="depends">
-    </target>
-
+    
 </project>
