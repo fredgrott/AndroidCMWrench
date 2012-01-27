@@ -5,6 +5,13 @@ AndroidCMwrench set of ant scripts are meant to be executed after your IDE has
 executed its incremental build. They are not at this time meant to be used in 
 a Contiuous Integration Server environment.
 
+Website and Example
+==================
+
+You can see an example and the website explaining everything at:
+
+[AndroidCMWrench website](http://shareme.github.com/AndroidCMWrench/)
+
 
 If You Do Not Have Eclipse
 ======================
