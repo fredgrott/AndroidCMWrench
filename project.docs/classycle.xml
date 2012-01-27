@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type='text/xsl' href='reportXMLtoHTML.xsl'?>
+<classycle title='/home/fredgrott/git/GITHUB/AndroidCMWrench/bin/classes/com/github/shareme/androidcmwrench/AndroidCMWrenchActivity.class' date='2012-01-26'>
+  <cycles>
+    <cycle name="com.github.shareme.androidcmwrench.R and inner classes" size="5" longestWalk="0" girth="2" radius="1" diameter="2" bestFragmentSize="1">
+      <classes>
+        <classRef name="com.github.shareme.androidcmwrench.R$layout" eccentricity="2" maximumFragmentSize="4"/>
+        <classRef name="com.github.shareme.androidcmwrench.R" eccentricity="1" maximumFragmentSize="1"/>
+        <classRef name="com.github.shareme.androidcmwrench.R$attr" eccentricity="2" maximumFragmentSize="4"/>
+        <classRef name="com.github.shareme.androidcmwrench.R$drawable" eccentricity="2" maximumFragmentSize="4"/>
+        <classRef name="com.github.shareme.androidcmwrench.R$string" eccentricity="2" maximumFragmentSize="4"/>
+      </classes>
+      <centerClasses>
+        <classRef name="com.github.shareme.androidcmwrench.R"/>
+      </centerClasses>
+      <bestFragmenters>
+        <classRef name="com.github.shareme.androidcmwrench.R"/>
+      </bestFragmenters>
+    </cycle>
+  </cycles>
+  <classes numberOfExternalClasses="3">
+    <class name="com.github.shareme.androidcmwrench.R$layout" sources="" type="class" innerClass="true" size="442" usedBy="1" usesInternal="1" usesExternal="1" layer="0" cycle="com.github.shareme.androidcmwrench.R and inner classes">
+      <classRef name="com.github.shareme.androidcmwrench.R" type="usedBy"/>
+      <classRef name="java.lang.Object" type="usesExternal"/>
+      <classRef name="com.github.shareme.androidcmwrench.R" type="usesInternal"/>
+    </class>
+    <class name="com.github.shareme.androidcmwrench.R$string" sources="" type="class" innerClass="true" size="475" usedBy="1" usesInternal="1" usesExternal="1" layer="0" cycle="com.github.shareme.androidcmwrench.R and inner classes">
+      <classRef name="com.github.shareme.androidcmwrench.R" type="usedBy"/>
+      <classRef name="java.lang.Object" type="usesExternal"/>
+      <classRef name="com.github.shareme.androidcmwrench.R" type="usesInternal"/>
+    </class>
+    <class name="com.github.shareme.androidcmwrench.R$attr" sources="" type="class" innerClass="true" size="388" usedBy="1" usesInternal="1" usesExternal="1" layer="0" cycle="com.github.shareme.androidcmwrench.R and inner classes">
+      <classRef name="com.github.shareme.androidcmwrench.R" type="usedBy"/>
+      <classRef name="java.lang.Object" type="usesExternal"/>
+      <classRef name="com.github.shareme.androidcmwrench.R" type="usesInternal"/>
+    </class>
+    <class name="com.github.shareme.androidcmwrench.R$drawable" sources="" type="class" innerClass="true" size="455" usedBy="1" usesInternal="1" usesExternal="1" layer="0" cycle="com.github.shareme.androidcmwrench.R and inner classes">
+      <classRef name="com.github.shareme.androidcmwrench.R" type="usedBy"/>
+      <classRef name="java.lang.Object" type="usesExternal"/>
+      <classRef name="com.github.shareme.androidcmwrench.R" type="usesInternal"/>
+    </class>
+    <class name="com.github.shareme.androidcmwrench.AndroidCMWrenchActivity" sources="" type="class" innerClass="false" size="582" usedBy="0" usesInternal="0" usesExternal="2" layer="0" cycle="">
+      <classRef name="android.app.Activity" type="usesExternal"/>
+      <classRef name="android.os.Bundle" type="usesExternal"/>
+    </class>
+    <class name="com.github.shareme.androidcmwrench.R" sources="" type="class" innerClass="false" size="585" usedBy="4" usesInternal="4" usesExternal="1" layer="0" cycle="com.github.shareme.androidcmwrench.R and inner classes">
+      <classRef name="com.github.shareme.androidcmwrench.R$attr" type="usedBy"/>
+      <classRef name="com.github.shareme.androidcmwrench.R$drawable" type="usedBy"/>
+      <classRef name="com.github.shareme.androidcmwrench.R$layout" type="usedBy"/>
+      <classRef name="com.github.shareme.androidcmwrench.R$string" type="usedBy"/>
+      <classRef name="java.lang.Object" type="usesExternal"/>
+      <classRef name="com.github.shareme.androidcmwrench.R$attr" type="usesInternal"/>
+      <classRef name="com.github.shareme.androidcmwrench.R$drawable" type="usesInternal"/>
+      <classRef name="com.github.shareme.androidcmwrench.R$layout" type="usesInternal"/>
+      <classRef name="com.github.shareme.androidcmwrench.R$string" type="usesInternal"/>
+    </class>
+  </classes>
+  <packageCycles>
+  </packageCycles>
+  <packages>
+    <package name="com.github.shareme.androidcmwrench" sources=""  size="6" usedBy="1" usesInternal="1" usesExternal="3" layer="0" cycle="">
+      <packageRef name="com.github.shareme.androidcmwrench" type="usedBy"/>
+      <packageRef name="java.lang" type="usesExternal"/>
+      <packageRef name="com.github.shareme.androidcmwrench" type="usesInternal"/>
+      <packageRef name="android.app" type="usesExternal"/>
+      <packageRef name="android.os" type="usesExternal"/>
+    </package>
+  </packages>
+</classycle>
